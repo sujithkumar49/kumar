@@ -1,0 +1,17 @@
+package day12;
+
+public class PaymentPage {
+	
+	public PaymentPage selectPaymentMode() {
+		System.out.println("Select the payment mode");
+		return new PaymentPage();
+	}
+	
+	public ProductConfirmationPage makePayment() {
+		System.out.println("user done with the payment");
+		return new ProductConfirmationPage();
+	}
+	
+	
+
+}
