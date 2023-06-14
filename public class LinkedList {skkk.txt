@@ -1,0 +1,54 @@
+public class LinkedList {
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    static Node findKthToLastElement(Node head, int k) {
+        if (head == null || k <= 0) {
+            return null;
+        }
+
+        Node p1 = head;
+        Node p2 = head;
+
+        // Move p1 k positions ahead
+        for (int i = 0; i < k; i++) {
+            if (p1 == null) {
+                return null; 
+            }
+            p1 = p1.next;
+        }
+
+        // Move both pointers until p1 reaches the end
+        while (p1 != null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+
+        return p2;
+    }
+
+    public static void main(String[] args) {
+        // Create a sample linked list: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+        Node head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = new Node(4);
+        head.next.next.next.next = new Node(5);
+        head.next.next.next.next.next = new Node(6);
+
+        int k = 3; // Find the 3rd to the last element
+
+        Node kthToLast = findKthToLastElement(head, k);
+        if (kthToLast != null) {
+            System.out.println("The " + k + "th to the last element is: " + kthToLast.data);
+        } else {
+            System.out.println("Invalid k value. The list length is less than " + k);
+        }
+    }
+}
