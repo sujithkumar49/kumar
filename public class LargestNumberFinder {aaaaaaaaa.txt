@@ -1,0 +1,32 @@
+public class LargestNumberFinder {
+    public static void main(String[] args) {
+        int N = 1234567; // The given number
+
+       
+        String numberString = String.valueOf(N);
+
+        int largestNumber = Integer.MIN_VALUE;
+        int largestIndex = -1;
+
+        
+        for (int i = 0; i < numberString.length(); i++) {
+            // Remove the current digit and convert the remaining string to a number
+            StringBuilder sb = new StringBuilder(numberString);
+            sb.deleteCharAt(i);
+            int currentNumber = Integer.parseInt(sb.toString());
+
+           
+            if (currentNumber > largestNumber || (currentNumber == largestNumber && i < largestIndex)) {
+                largestNumber = currentNumber;
+                largestIndex = i;
+            }
+        }
+
+       
+        StringBuilder result = new StringBuilder(numberString);
+        result.deleteCharAt(largestIndex);
+
+       
+        System.out.println("Largest number after removing one digit: " + result.toString());
+    }
+}
