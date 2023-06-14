@@ -1,0 +1,34 @@
+package sujithkumarsk;
+
+public class SujithSk {
+
+	public static class StringCompression {
+	    public static String compressString(String input) {
+	        int length = input.length();
+	        StringBuilder compressed = new StringBuilder();
+	        int count = 1;
+
+	        for (int i = 0; i < length; i++) {
+	            if (i + 1 < length && input.charAt(i) == input.charAt(i + 1)) {
+	                count++;
+	            } else {
+	                compressed.append(input.charAt(i)).append(count);
+	                count = 1;
+	            }
+	        }
+
+	        if (compressed.length() < length) {
+	            return compressed.toString();
+	        } else {
+	            return input;
+	        }
+	    }
+
+	    public static void main(String[] args) {
+	        String input = "aaaabbbbcccdddd";
+	        String compressed = compressString(input);
+	        System.out.println(compressed);
+	    }
+	}
+
+	}
